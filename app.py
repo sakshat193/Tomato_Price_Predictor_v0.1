@@ -122,13 +122,13 @@ if col1.button('Predict'):
 # Show Past Data button
 if col2.button('Show Past Data'):
     for i in df['Centre_Name'].unique():
-    globals()['Data_'+i] = df[df['Centre_Name'] == i].copy()
-    globals()['Data_'+i]['Date'] = pd.to_datetime(globals()['Data_'+i]['Date'])
-    globals()['Data_'+i]['YearMonth'] = globals()['Data_'+i]['Date'].dt.to_period('M')
-    globals()['Data_mean_dates_'+i] = globals()['Data_'+i].groupby('YearMonth')['Price'].mean().reset_index()
-    globals()['Data_mean_dates_'+i].set_index('YearMonth', inplace=True)
-    # Update the Centre_Name in the main DataFrame
-    df.loc[df['Centre_Name'] == i, 'Centre_Name_mean_date'] = f"Data_mean_{i}"
+        globals()['Data_'+i] = df[df['Centre_Name'] == i].copy()
+        globals()['Data_'+i]['Date'] = pd.to_datetime(globals()['Data_'+i]['Date'])
+        globals()['Data_'+i]['YearMonth'] = globals()['Data_'+i]['Date'].dt.to_period('M')
+        globals()['Data_mean_dates_'+i] = globals()['Data_'+i].groupby('YearMonth')['Price'].mean().reset_index()
+        globals()['Data_mean_dates_'+i].set_index('YearMonth', inplace=True)
+        # Update the Centre_Name in the main DataFrame
+        df.loc[df['Centre_Name'] == i, 'Centre_Name_mean_date'] = f"Data_mean_{i}"
 
     # Create the plot for the selected city
     city_data = df[df['Centre_Name_mean_date'] == f"Data_mean_{city}"]
@@ -142,6 +142,6 @@ if col2.button('Show Past Data'):
                       xaxis_title='Date',
                       yaxis_title='Price (₹ per kg)')
     
-    st.plotly_chart(fig)
+    st.plotly_chart(fig)y_chart(fig)
 
 st.info('Note: Predictions are based on historical data and may not account for recent market changes.')
