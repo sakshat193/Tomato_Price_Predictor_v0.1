@@ -72,7 +72,7 @@ def load_models():
 models = load_models()
 
 # Streamlit app
-st.title('Tomato Price Prediction and Historical Data')
+st.title('Daam Dost - \nTomato Price Prediction and Historical Data')
 
 # User inputs
 months = ['January', 'February', 'March', 'April', 'May', 'June', 
