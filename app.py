@@ -129,21 +129,23 @@ for i in df['Centre_Name'].unique():
     # Update the Centre_Name in the main DataFrame
     df.loc[df['Centre_Name'] == i, 'Centre_Name_mean_date'] = f"Data_mean_{i}"
     
-# Show Past Data button
 if col2.button('Show Past Data'):
-        # Create the plot for the selected city
-    city_data = df[df['Centre_Name_mean_date'] == f"Data_mean_{city}"]
+    # Access the correct DataFrame for the selected city
+    city_data_mean = globals().get(f'Data_mean_dates_{city}', None)
     
-    # Create the plot
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=city_data['Date'], y=city_data['Price'],
-                             mode='lines', name='Price'))
-    
-    fig.update_layout(title=f'Historical Onion Prices in {city}',
-                      xaxis_title='Date',
-                      yaxis_title='Price (₹ per kg)')
-    
-    # Display the plot in Streamlit
-    st.plotly_chart(fig)
+    if city_data_mean is not None:
+        # Create the plot
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=city_data_mean.index.to_timestamp(), y=city_data_mean['Price'],
+                                 mode='lines', name='Average Price'))
+        
+        fig.update_layout(title=f'Historical Onion Prices in {city}',
+                          xaxis_title='Date',
+                          yaxis_title='Price (₹ per kg)')
+        
+        # Display the plot
+        st.plotly_chart(fig)
+    else:
+        st.write(f"No data available for {city}")
 
 st.info('Note: Predictions are based on historical data and may not account for recent market changes.')
