@@ -51,23 +51,15 @@ Access the Application
 
 Open your web browser and go to http://localhost:8501 to interact with the application.
 
-Application Layout
-Title: Displays the application title.
-User Inputs:
-Month: Select the month for prediction.
-Year: Use the slider to select the year for prediction.
-City: Select the city for which you want to predict the price.
-Buttons:
-Predict: Click this to get the predicted onion price for the selected month and year.
-Show Past Data: Click this to visualize historical onion prices for the selected city.
-Styling
+## Application Layout
+- Title: Displays the application title.
+- User Inputs:
+   Month: Select the month for prediction.
+   Year: Use the slider to select the year for prediction.
+   City: Select the city for which you want to predict the price.
+   Buttons:
+      -- Predict: Click this to get the predicted onion price for the selected month and year.
+      -- Show Past Data: Click this to visualize historical onion prices for the selected city.
+## Styling
 The application uses a gradient background with shades of orange, green, and blue, and ensures that text color is black for readability.
 
-Troubleshooting
-ValueError: Ensure that your data file train.csv has a 'Date' column formatted correctly and that the model files are named and placed correctly.
-KeyError: Verify that the city names in the train.csv file match the names used in your model files.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Contributing
-Feel free to submit issues, pull requests, or suggestions to improve the application.
