@@ -49,7 +49,7 @@ Copy code
 streamlit run app.py
 Access the Application
 
-Open your web browser and go to [http://localhost:8501](https://daam-dost-tomato-price-predictor.streamlit.app/) to interact with the application.
+Open your web browser and go to [Daam Dost](https://daam-dost-tomato-price-predictor.streamlit.app/) to interact with the application.
 
 ## Application Layout
 - Title: Displays the application title.
